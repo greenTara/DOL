@@ -2,7 +2,7 @@
 % arara: makeindex 
 % arara: pdflatex: { synctex: on } 
 
-\newcommand{\version}{0.95}
+\newcommand{\version}{0.951}
 
 
 %todo
@@ -575,11 +575,11 @@ Version \version
 \vskip 12pt 
 \nointerlineskip
 
-OMG Document Number: ad/2015-05-03 \\
-Normative reference: \\
-Machine readable files(s): ad/2015-05-05, ad/2015-05-05, \dots, ad/2015-05-12, \\ \qquad \qquad \qquad ad/2015-05-14 \\
-Normative: \\
-Non-normative: \\
+OMG Document Number: ad/15-06-04  \\ %ad/2015-05-03
+%Normative reference: \\
+Machine readable files (normative): ad/2015-xx-yy, ad/2015-xx-yy \ednote{FixMe}\\
+%Normative: \\
+%Informative: \\
  
 
 \vskip 12pt
@@ -595,11 +595,11 @@ Non-normative: \\
 \pagenumbering{roman} 
 		
 
-\noindent Copyright \copyright 2014, Object Management Group, Inc.\\
-Copyright \copyright 2014, Fraunhofer FOKUS\\
-Copyright \copyright 2014, MITRE\\
-Copyright \copyright 2014, Otto-von-Guericke-Universit{\"a}t Magdeburg  \\
-Copyright \copyright 2014, Thematix Partners LLC \\
+\noindent Copyright \copyright 2014-15, Object Management Group, Inc.\\
+Copyright \copyright 2014-15, Fraunhofer FOKUS\\
+Copyright \copyright 2014-15, MITRE\\
+Copyright \copyright 2014-15, Otto-von-Guericke-Universit{\"a}t Magdeburg  \\
+Copyright \copyright 2014-15, Thematix Partners LLC \\
 
 
 
@@ -796,15 +796,16 @@ The reader is encouraged to report any technical or editing issues/problems
 \setcounter{chapter}{-1}
 \chapter{Submission-Specific Material}
 \section{Submission Preface}
-Fraunhofer FOKUS, MITRE, and Thematix Partners LLC are pleased  to submit this joint proposal in response to the Ontology, Model and Specification Integration and Interoperability (OntoIOp) RFP  (OMG document ad/2013-12-02). The submitter contacts for this submission are:
+Fraunhofer FOKUS, MITRE, and Thematix Partners LLC are pleased  to submit this joint proposal in response to the Ontology, Model and Specification Integration and Interoperability (OntoIOp) RFP  (OMG document ad/2013-12-02). The joint proposal is supported by Athan Services  and the Otto-von-Guericke University Magdeburg. The contacts for this submission are:
 \begin{itemize}
 	\item Fraunhofer FOKUS, Andreas Hoffmann, andreas.hoffmann@fokus.fraunhofer.de
 	\item MITRE, Leo Obrst, lobrst@mitre.org
 	\item Thematix Partners LLC, Elisa Kendall, ekendall@thematix.com	
+	\item Athan Services, Tara Athan, taraathan@gmail.com
+	\item Otto-von-Guericke University Magdeburg, Till Mossakowski, till@iws.cs.uni-magdeburg.de  (\textit{lead contact})
 \end{itemize}
 
 
-Clause 0 of this document contains information specific to the OMG submission process and is not part of the proposed specification. The proposed specification starts with Clause 1 “Scope”.
 
 
 
@@ -1094,7 +1095,7 @@ The LoLa ontology is discussed in annex \ref{a:lola}.
 %	
 6.7.(e)	& 
 Proposals should discuss the use of QVT for expressing logic translations.	&
-This has been left for future work.
+\cbs This is discussed in annex \ref{sec:repr-trans}.\cbe
    \\ \hline
 %	
 6.7.(f)	& 
@@ -1302,9 +1303,9 @@ these is discussed in informative annexes of this \IS.
 \begin{itemize}
 \item its logical language aspect\index{language aspect ! logical} either needs to satisfy certain criteria \cbs related to its own abstract syntax and formal semantics\cbe, or there must be a translation (again satisfying certain
 criteria) to a language that already is \DOL-conforming.
-\item its structuring language aspect\index{language aspect ! structuring} (if present) must not conflict with \DOL's own structuring
+\item its structuring language aspect\index{language aspect ! structuring} (if present) must \cbs be compatible\cbe\ with \DOL's own structuring
 mechanisms
-\item its annotation language aspect\index{language aspect ! annotation} must not conflict with \DOL's meta-language constructs.
+\item its annotation language aspect\index{language aspect ! annotation} must \cbs be compatible\cbe\ with \DOL's meta-language constructs.
 \end{itemize}
 We also define different conformance levels with respect to the usage of IRIs as identifiers for all kinds
 of entities that the OMS language supports.
@@ -1343,7 +1344,7 @@ The \emph{logical language aspect}\index{language aspect ! logical} of an OMS la
 is %semantically
 conforming with \DOL if each logic corresponding to a profile (including
 the logic corresponding to the whole logical language aspect) is presented as an
-institution \cite{GoguenBurstall92}, and there is a mapping from
+institution \cbs in the sense of Definition~\ref{def:inst} in clause~\ref{c:semantics}\cbe , and there is a mapping from
 the abstract syntax of the OMS language to signatures and sentences
 of the institution.
 % It may additionally be presented as an institution, leading
@@ -1361,8 +1362,11 @@ The \emph{annotation language aspect}\index{language aspect ! annotation} of an 
 have no impact on the semantics. The annotation language aspect \shall be non-empty; it \shall
 provide the facility to express comments.
 
-We define the following levels of conformance of the abstract syntax of a 
- OMS language with \DOL, listed from highest to lowest:
+\cbs
+Concerning item 1.\ in the definition of DOL conformance of OMS
+languages above, the following levels of conformance of the abstract
+syntax of a OMS language with \DOL are defined,\cbe\ 
+listed from highest to lowest:
 
 \begin{description}
 \item[Full IRI conformance] The abstract syntax specifies that IRIs be used for
@@ -1445,7 +1449,7 @@ We define seven levels of conformance of a serialization of an OMS language with
 
 \begin{description}
 \item[XMI conformance]
-An XMI serialization has been automatically derived from the SMOF specification
+An XMI serialization \cbs for OMS written in the OMS language \cbe\ has been automatically derived from the SMOF specification
 of the abstract syntax, using MOF 2 XMI Mapping.
 %\ednote{Christoph to all: I'm not sure how MOF and XMI works, i.e. how to inject identifiers into comments there. TM: XMI is an XML-based format.}
 \item[XML conformance]
@@ -8624,6 +8628,7 @@ Models are translated identically.
 
 \ssclause{$FOL \to \CASL$}
 This is an obvious sublogic.
+
  
 \cbs
 \ssclause{UML class diagrams $to \OWL$}
@@ -8750,6 +8755,20 @@ The ontology is extended by translating parts of this net and its multiplicity c
 \end{lstlisting}
 \end{itemize}
 \cbe 
+
+\sclause{Formal Representation of Language and Logic Translations}
+\label{sec:repr-trans}
+\cbs
+A formal representation of language and logic translations still needs
+to be developed. For the syntax aspects of these translations, QVT
+could be a useful option. However, it would have added value to choose
+a representation of translations that allows the their correctness
+to be proven easily. Such a representation would have to interact
+with suitable representations of languages and loigcs in a 
+logical framework. See \cite{CodescuEtAl2011d} for some work
+in this direction.
+\cbe
+
 \infannex{Extended Logic Graph}\label{a:ext-graph}
 
 \begin{figure}
